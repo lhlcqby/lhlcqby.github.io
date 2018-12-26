@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>龙皇第一次发话 | 海龙科技欢迎您</title>
+<title>海龙科技欢迎您</title>
 
 
     <link rel="alternate" href="/atom.xml" title="海龙科技欢迎您" type="application/atom+xml">
@@ -136,9 +136,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="龙皇第一次发话">
+        <h1 id="">
             
-	            龙皇第一次发话
+	            NO Title!
             
         </h1>
         <div class="post-meta">
@@ -167,7 +167,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/12/22</span>
+            <span class="date-meta">2018/12/26</span>
         </span>
         
             <span class="fa-wrap">
@@ -183,8 +183,111 @@
     </div>
     
     <div class="post-body post-content">
-        <p><img src="http://img05.tooopen.com/images/20150213/tooopen_sy_80778956431.jpg" alt=""><br><img src="http://shumahezi.com/uploadfile/2013/0318/20130318115555263.jpg" alt=""></p>
+        <p>– 创建人力资源管理系统数据库<br>drop database if exists hrs;<br>create database hrs default charset utf8;</p>
+<p>– 切换数据库上下文环境<br>use hrs;</p>
+<p>– 删除表<br>drop table if exists tb_emp;<br>drop table if exists tb_dept;</p>
+<p>– 创建部门表<br>create table tb_dept<br>(<br>dno int comment ‘部门编号’,<br>dname varchar(10) not null comment ‘部门名称’,<br>dloc varchar(20) not null comment ‘部门所在地’,<br>primary key (dno)<br>);</p>
+<p>– 添加部门记录<br>insert into tb_dept values<br>    (10, ‘会计部’, ‘北京’),<br>    (20, ‘研发部’, ‘成都’),<br>    (30, ‘销售部’, ‘重庆’),<br>    (40, ‘运维部’, ‘深圳’);</p>
+<p>– 创建员工表<br>create table tb_emp<br>(<br>eno int comment ‘员工编号’,<br>ename varchar(20) not null comment ‘员工姓名’,<br>job varchar(20) not null comment ‘员工职位’,<br>mgr int comment ‘主管编号’,<br>sal int not null comment ‘员工工资’,<br>comm int comment ‘每月补贴’,<br>dno int comment ‘所在部门编号’,<br>primary key (eno),<br>foreign key (dno) references tb_dept (dno)<br>);</p>
+<p>– 添加员工记录<br>insert into tb_emp values<br>    (7800, ‘张三丰’, ‘总裁’, null, 9000, 1200, 20),<br>    (2056, ‘乔峰’, ‘分析师’, 7800, 5000, 1500, 20),<br>    (3088, ‘李莫愁’, ‘设计师’, 2056, 3500, 800, 20),<br>    (3211, ‘张无忌’, ‘程序员’, 2056, 3200, null, 20),<br>    (3233, ‘丘处机’, ‘程序员’, 2056, 3400, null, 20),<br>    (3251, ‘张翠山’, ‘程序员’, 2056, 4000, null, 20),<br>    (5566, ‘宋远桥’, ‘会计师’, 7800, 4000, 1000, 10),<br>    (5234, ‘郭靖’, ‘出纳’, 5566, 2000, null, 10),<br>    (3344, ‘黄蓉’, ‘销售主管’, 7800, 3000, 800, 30),<br>    (1359, ‘胡一刀’, ‘销售员’, 3344, 1800, 200, 30),<br>    (4466, ‘苗人凤’, ‘销售员’, 3344, 2500, null, 30),<br>    (3244, ‘欧阳锋’, ‘程序员’, 3088, 3200, null, 20),<br>    (3577, ‘杨过’, ‘会计’, 5566, 2200, null, 10),<br>    (3588, ‘朱九真’, ‘会计’, 5566, 2500, null, 10);</p>
+<p>– 查询薪资最高的员工姓名和工资<br>select ename as 姓名 , sal 工资 from tb_emp where sal=(select max(sal)  from tb_emp)</p>
+<p>– 查询员工的姓名和年薪((月薪+补贴)<em>12)<br>select ename , (sal+ifnull(comm,0))</em>12 as annsal from tb_emp order by annsal desc;</p>
+<p>– 查询有员工的部门的编号和人数<br>select count(dno) 人数 , dno 部门编号 from tb_emp group by dno </p>
+<p>– 查询所有部门的名称和人数   (左外连接)</p>
+<p>select dname 部门  , ifnull(dno1,0) 人数 from tb_dept t1 left outer join (select dno , count(dno) as dno1 from tb_emp group by dno ) t2 on t1.dno=t2.dno;<br>– 有二义性是，需要使用完全限定名</p>
+<p>– 这种方式不支持MySQL 所以只能前面一种。<br>select dname, ifnull(dno1,0) from tb_dept t1, (select count(dno) dno1  , dno  from tb_emp group by dno ) t2  where  t1.dno=t2.dno(+) ;</p>
+<p>– Oracle 中可以 t1.dno=t2.dno（+） ； 左外连接。<br>– 查询薪资最高的员工(Boss除外)的姓名和工资<br>select  ename 姓名 ,  sal 工资 from tb_emp where sal= (select max(sal) from tb_emp  where mgr is not null) ;</p>
+<p>– 查询薪水超过平均薪水的员工的姓名和工资<br>select ename 姓名 , sal 工资 from tb_emp where sal&gt; (select avg(sal) from tb_emp);</p>
+<p>– 查询薪水超过其所在部门平均薪水的员工的姓名、部门编号和工资</p>
+<p>– 自己写的有问题<br>– select ename  from tb_emp where sal in (select avg(sal), dno from tb_emp group by  dno) ;<br>select ename, t1.dno, sal, sal-avgsal as delta from tb_emp t1 inner join (select avg(sal) avgsal, dno from tb_emp group by  dno) t2 on t1.dno= t2.dno  where sal &gt;avgsal ;</p>
+<p>select ename, dno, sal, sal-avgsal as delta from tb_emp t1 inner join (select avg(sal) avgsal, dno as deptno from tb_emp group by  dno) t2 on deptno= dno  where sal &gt;avgsal ;  –  两个别名</p>
+<p>– 查询部门中薪水最高的人姓名、工资和所在部门名称</p>
+<p>select dno , max(sal) as maxsal from tb_emp group by dno;</p>
+<p>select ename , sal ,t1.dno from tb_emp t1  inner join (select dno , max(sal) as maxsal from tb_emp group by dno) t2 on t1.dno=t2.dno where sal=maxsal ;</p>
+<p>select ename , sal , dname from tb_dept t3 inner join (select ename , sal ,t1.dno from tb_emp t1  inner join (select dno , max(sal) as maxsal from tb_emp group by dno) t2 on t1.dno=t2.dno where sal=maxsal) t4 on t3.dno= t4.dno;</p>
+<p>– 查询主管的姓名和职位<br>– 我写的。理解有问题，一个主管也是主管。 select ename , job  from tb_emp where job=(select  job  from tb_emp where job like ‘%管%’ );<br>– select ename , job  from tb_emp where job  like ‘%管%’<br>select distinct mgr from tb_emp where mgr is not null ;</p>
+<p>select nmame , job from tb_emp where eno in (select distinct mgr from tb_emp where mgr is not null);<br>– 集合运算 和 去重操作性能都非常底下。 应该尽量少用（ 数据太大，不适合。）<br>– 可以使用 exists 和 not exists  来替代 集合运算和去重。<br>select now();<br>select ‘你’ from tb_emp ;   – 行业中都是写  “ x ”<br>exists select ‘x’ from tb_emp ;<br>select ename , job from tb_emp t1 where exists (select ‘x’ from tb_emp t2 where t1.eno= t2.mgr);</p>
+<p>– 查询薪资排名4~6名的员工姓名和工资</p>
+<p>select ename , sal from tb_emp order by sal desc limit 3 offset 3;<br>select ename , sal from tb_emp order by sal desc limit 3 ,3;</p>
+<p>子句顺序：</p>
+<p>– select - from - where - group by - having - order by - limit ;</p>
+<pre><code>import pymysql
+def main():
+    no = int(input(&apos;编号：&apos;))
+    name = input(&apos;名字：&apos;)
+    loc = input(&apos;地址：&apos;)
 
+    # 1 创建数据库连接对象
+    con = pymysql.connect(host=&apos;47.106.230.231&apos;,port=3306,
+                          database=&apos;hrs&apos;,charset=&apos;utf8&apos;,
+                          user=&apos;root&apos;,password=&apos;123456&apos;)  # autocommit = on / off
+    try:
+        # 2 通过连接对象获取游标
+        cursor = con.cursor()  # 游标
+        # 3 通过游标执行SQL并获得执行结果
+        result = cursor.execute(
+            # &apos;insert into tb_dept values(80,&quot;研发三部&quot;,&quot;大同&quot;)&apos;)
+            &apos;insert into tb_dept values(%s, %s, %s)&apos;,(no, name , loc))  #字符串站位 （安全占位符）
+        if  result == 1:
+            # 4  提交事务
+            con.commit()
+            print(&apos;添加成功&apos;)
+    except:
+         # 4. 操作失败回滚事务
+        con.rollback()
+
+    # except pymysql.MySQLError as error:
+    #    print(error)  #  爆出错误
+    finally:
+        # 5. 关闭连接释放资源。
+        con.close()
+
+if __name__ == &apos;__main__&apos;:
+    main()
+
+import pymysql
+from pymysql.cursors import DictCursor
+class Dept(object):
+    def __init__(self,no , name , loc):
+        self.no = no
+        self.name = name
+        self.loc = loc
+    def __str__(self):
+        return f&apos;{self.no}\t{self.name}\t{self.loc}&apos;     # 类似于之前的站位符
+
+
+def main():
+    #  查询结果：
+    # 1 创建数据库连接对象
+    con = pymysql.connect(host=&apos;47.106.230.231&apos;, port=3306,
+                          database=&apos;hrs&apos;,charset=&apos;utf8&apos;,
+                          user=&apos;root&apos;,password=&apos;123456&apos;,autocommit=True)  # autocommit = on / off
+    try:
+        with con.cursor(cursor=DictCursor) as cursor:
+            cursor.execute(&apos;select dno as no  , dname as name ,dloc as loc from tb_dept&apos; )
+            results = cursor.fetchall()
+            print(results)
+            # print(&apos;编号\t名称\t\t所在地&apos;)
+            for result in results:
+                dept = Dept(**result)       # 构造对象。 吊了两个魔法方法， new。 intit
+                #    字典解包？？？？？？？
+                print(dept)
+
+
+
+
+    except:
+         # 4. 操作失败回滚事务
+        con.rollback()
+    finally:
+        con.close()
+
+
+
+
+if __name__ == &apos;__main__&apos;:
+    main()
+</code></pre>
     </div>
     
     <div class="post-footer">
@@ -201,11 +304,16 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/12/26/内容_数据库操作/" class="pre-post btn btn-default" title="">
+        <a href="/2018/12/26/数据库_Python操作数据库/" class="pre-post btn btn-default" title="">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
             <span class="hidden-xs"></span>
         </a>
     
+    
+        <a href="/2018/12/22/第一次。来吧/" class="next-post btn btn-default" title="龙皇第一次发话">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">龙皇第一次发话</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
     
 </div>
 
