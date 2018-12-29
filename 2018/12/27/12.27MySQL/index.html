@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="海龙科技欢迎您">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>2018.12.27 MySQL &amp; Redis | 海龙科技欢迎您</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="海龙科技欢迎您" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Doe">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 海龙科技集团 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">海龙科技欢迎您</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>测试版</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://www.baidu.com"><i class="fa "></i>前言</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://www.douyu.com/directory/myFollow"><i class="fa "></i>科技</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="http://www.runoob.com/"><i class="fa "></i>学习</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>历史</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href=""><i class="fa /tags/ || th"></i>标签</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="2018.12.27 MySQL &amp; Redis">
+            
+	            2018.12.27 MySQL &amp; Redis
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/12/27</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<p>MySQL：</p>
+<h1 id="解包："><a href="#解包：" class="headerlink" title="解包："></a>解包：</h1><pre><code>import pymysql
+from pymysql.cursors import DictCursor
+
+
+class Emp(object):
+    def __init__(self,no , name , job, sal):
+        self.no = no
+        self.name = name
+        self.job = job
+        self.sal = sal
+    def  __str__(self):
+        return f&apos;{self.no}-{self.name}-{self.job}-{self.sal}&apos;
+
+
+def main():
+    page = int(input(&apos;页码：&apos;))
+    size = int(input(&apos;页面大小：&apos;))
+    con = pymysql.connect(host=&apos;127.0.0.1&apos;,port=3306,
+                          db=&apos;hrs&apos;,charset=&apos;utf8&apos;,user=&apos;root&apos;,
+                          passwd=&apos;123456&apos;,autocommit=True)
+    print(con)
+    try:
+        with con.cursor(cursor=DictCursor) as cursor:
+            cursor.execute(&apos;select empno as no , ename as name , job, sal from TbEmp limit %s, %s&apos;, ((page-1)*size,size))
+            for empt in cursor.fetchall():
+                x = Emp(**empt)
+                print(x)
+    finally:
+        con.close()
+
+
+if __name__ == &apos;__main__&apos;:
+    main()
+</code></pre><h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><h4 id="前面的参数叫做位置参数，传参时对号入座即可"><a href="#前面的参数叫做位置参数，传参时对号入座即可" class="headerlink" title="* 前面的参数叫做位置参数，传参时对号入座即可"></a>* 前面的参数叫做位置参数，传参时对号入座即可</h4><h4 id="后面的参数叫做命名关键字参数。传参时必须以“参数名-参数值”-的形式传参。"><a href="#后面的参数叫做命名关键字参数。传参时必须以“参数名-参数值”-的形式传参。" class="headerlink" title="* 后面的参数叫做命名关键字参数。传参时必须以“参数名=参数值” 的形式传参。"></a>* 后面的参数叫做命名关键字参数。传参时必须以“参数名=参数值” 的形式传参。</h4><h4 id="可变参数-关键字参数"><a href="#可变参数-关键字参数" class="headerlink" title="可变参数/ 关键字参数"></a>可变参数/ 关键字参数</h4><p>def foo(a,<em>args,b):<br>    print(</em>args)<br>    return a+b<br>def main():<br>    print(foo(1,b=2))<br>    print(foo(1,2,3,4,b=40))</p>
+<pre><code>items = [&apos;hello&apos;,&apos;waterqwer&apos;,&apos;zoo&apos;,&apos;apple&apos;,&apos;good&apos;]
+print(sorted(items,key=lambda x : len(x),reverse=True))
+</code></pre><p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()</p>
+<hr>
+<h1 id="redis-官网：redis-io"><a href="#redis-官网：redis-io" class="headerlink" title="redis :   官网：redis.io"></a>redis :   官网：redis.io</h1><p>KV存储系统 - remote dictionary server</p>
+<p>Github Twitter YouTube （三大网站）<br>提供高速缓存服务 - 缓存热点数据（访问量大，数据里不大）</p>
+<p>缓解了数据的压力（高频访问数据不用直接访问数据库）</p>
+<p>redis-cli -h 电脑ip地址 -p 6379 -a 1qaz2wsx</p>
+<p>连接别人的服务器。</p>
+<p>redis 提供了两种持久化数据的方案：<br>1 RDB - 默认开启<br>2 AOF - 默认关闭  –appendonly yes<br>redis-server –requirepass 123456 –appendonly yes &gt; redis.log 2&gt; redis-error.log &amp;<br>将进程日志写入文件中。</p>
+<h1 id="一些软件运行命令语言（进程命令"><a href="#一些软件运行命令语言（进程命令" class="headerlink" title="一些软件运行命令语言（进程命令"></a>一些软件运行命令语言（进程命令</h1><p>jobs  查勘后台运行的进程<br>bg  %1 : 启动后台运行的进程<br>fg      前台运行<br>需要加到后台运行<br>CTR + z     –&gt;  bg<br>前台停止   ctr +c<br>解压： gunzip    g 开源协议  unzip 解压<br>tar -xvf     解归档<br>reds-server  &amp;    后台运行<br>ps -ef | grep redis-server </p>
+<p>netstat -nap | grep 端口号<br>kill (-9) 端口号                杀死端口</p>
+<h1 id="运维的命令（部分"><a href="#运维的命令（部分" class="headerlink" title="运维的命令（部分"></a>运维的命令（部分</h1><p>netstat<br>top<br>du<br>fdisk    分盘情况<br>kill     杀死进程</p>
+<h1 id="redis-命令"><a href="#redis-命令" class="headerlink" title="redis 命令"></a>redis 命令</h1><p>auth - 验证身份<br>ping - 心跳事件<br>set  - 设置键值对<br>get - 取值<br>expire - 设置超时时间<br>del  - 删除<br>keys  - 查看<br>exists - 判断是否存在<br>flushdb - 清空键值对 （只清除一个数据库）<br>flushall - 清除所有 （所有数据库中的所有键值对）<br>select - 切换底层数据库 （默认16库）<br>shutdown - 关闭服务器<br>save - 保存数据<br>bgsave - 后台保存。（另一个线程保存，节约时间）<br>quit  - 退出<br>dbsize - 当前数据库键值对数<br>incr - 对key 值键 加1<br>decr - 对key 值键 减1</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/12/27/1111111/" class="pre-post btn btn-default" title="12.27 疑惑">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">12.27 疑惑</span>
+        </a>
+    
+    
+        <a href="/2018/12/26/总结---2/" class="next-post btn btn-default" title="">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs"></span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-Hans'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解包："><span class="toc-text">解包：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#补充："><span class="toc-text">补充：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前面的参数叫做位置参数，传参时对号入座即可"><span class="toc-text">* 前面的参数叫做位置参数，传参时对号入座即可</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后面的参数叫做命名关键字参数。传参时必须以“参数名-参数值”-的形式传参。"><span class="toc-text">* 后面的参数叫做命名关键字参数。传参时必须以“参数名=参数值” 的形式传参。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可变参数-关键字参数"><span class="toc-text">可变参数/ 关键字参数</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#redis-官网：redis-io"><span class="toc-text">redis :   官网：redis.io</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些软件运行命令语言（进程命令"><span class="toc-text">一些软件运行命令语言（进程命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运维的命令（部分"><span class="toc-text">运维的命令（部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#redis-命令"><span class="toc-text">redis 命令</span></a></li>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: true || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

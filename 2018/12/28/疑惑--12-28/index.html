@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>tags | 海龙科技欢迎您</title>
+<title>海龙科技欢迎您</title>
 
 
     <link rel="alternate" href="/atom.xml" title="海龙科技欢迎您" type="application/atom+xml">
@@ -132,123 +132,165 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <article class="post">
-    <h1 class="post-head">tags</h1>
-    <div class="post-body">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="">
+            
+	            NO Title!
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
         
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/12/28</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<h2 id="title：疑惑-12-28"><a href="#title：疑惑-12-28" class="headerlink" title="title：疑惑 12.28"></a>title：疑惑 12.28</h2><h1 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h1><p>1 布隆过滤器<br>    布隆过滤器（Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制向量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都比一般的算法要好的多，缺点是有一定的误识别率和删除困难。<br>    如果想判断一个元素是不是在一个集合里，一般想到的是将所有元素保存起来，然后通过比较确定。链表，树等等数据结构都是这种思路. 但是随着集合中元素的增加，我们需要的存储空间越来越大，检索速度也越来越慢。不过世界上还有一种叫作散列表（又叫哈希表，Hash table）的数据结构。它可以通过一个Hash函数将一个元素映射成一个位阵列（Bit Array）中的一个点。这样一来，我们只要看看这个点是不是 1 就知道可以集合中有没有它了。这就是布隆过滤器的基本思想</p>
+<p>#2 开源镜像<br>“镜像网站”（英文:Mirror sites [1]  ），又译作““镜像站点” [1]<br>搜狐开源镜像站：<a href="http://mirrors.sohu.com/" target="_blank" rel="noopener">http://mirrors.sohu.com/</a> </p>
+<pre><code>既然是相同的网站内容，为什么要放在不同的网站服务器里，这难道就是“有钱任性”吗。其实不然，看看下面列举的“网站镜像”的几个好处吧。
+
+每个网站服务器的稳定性不是100%的，还有如果网站受到一些DDOS攻击，就会导致网站打不开，有了镜像网站，就不用怕了，还有其它网站同样可以浏览，这个功能有点像网站备份。
+如果你做的网站足够大，每天有很大的流量，特别一些下载类型网站，每天有大量的用户去下载网站上的资源，如果这些资源下载地址只使用一个网站的话，对于网站服务器的负担是很重的。这时我们可以引导用户到“网站镜像”上下载，来分担主网站的负担。这就是“镜像下载”
+</code></pre><h1 id="with-as"><a href="#with-as" class="headerlink" title="with-as"></a>with-as</h1><pre><code>try:
+
+    with open( &quot;a.txt&quot; ) as f :
+
+        do something
+
+except
+xxxError:
+
+    do something about exception
+</code></pre><p>with -as 表达式极大的简化了每次写finally的工作。这对保持diamante的优雅型有极大帮助的</p>
+<h1 id="时间装饰器"><a href="#时间装饰器" class="headerlink" title="时间装饰器"></a>时间装饰器</h1><pre><code>def timeit(fun)
+    def wrapper(x,y):
+        str_time = time.time()
+        fun(x,y)
+        end_time = time.time()
+        print(&quot;%s 函数运行时间为$s&quot; %(fun.__name__,end_time- str_time))
+    return wrapper
+
+@timeit
+def add(x,y):
+    return x+y
+
+print(add(1,3))
+</code></pre><p>####2.</p>
+<pre><code>import time
+def echoRuntime(func):
+    def wrapper(*args, **kwargs):
+        startTime = time.time()
+        func(*args, **kwargs)
+        endTime = time.time()
+        msecs = (endTime - startTime)
+        print(func.__name__+&quot; running time is %.2f s&quot; %msecs)
+    return wrapper
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
 </article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/12/28/12.28/" class="next-post btn btn-default" title="redis 2       12.28">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">redis 2       12.28</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-Hans'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
                 </main>
                 
-                    
-    <aside class="col-md-4 sidebar">
-        
-        
+                    <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">Search</h3>
-        <div id="search-form">
-            <div id="result-mask" class="hide"></div>
-            <div class="search-area">
-                
-                    <input id="search-key" type="search" autocomplete="off" placeholder="Search What？">
-                    <button type="button" class="search-form-submit" id="search-local">localSearch</button>
-                
-                
-                    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Google Search"><button type="submit" class="search-form-submit">谷歌搜索</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-                
-            </div>
-            <div id="result-wrap" class="hide">
-                <div id="search-result"></div>
-            </div>
-            <div class="hide">
-                <template id="search-tpl">
-                    <div class="item">
-                        <a href="/{path}" title="{title}">
-                            <div class="title">{title}</div>
-                            <div class="content">{content}</div>
-                        </a>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
-
+        <h3 class="title">Table of Contents</h3>
         
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title：疑惑-12-28"><span class="toc-text">title：疑惑 12.28</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#疑惑"><span class="toc-text">疑惑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#with-as"><span class="toc-text">with-as</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时间装饰器"><span class="toc-text">时间装饰器</span></a>
         
-    <div class="widget">
-        <h3 class="title">Notification</h3>
-        <div class="notification">
-            <p>
-    主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br>
-    主题使用：<a href="https://github.com/shenliyang/hexo-theme-snippet/blob/master/README.md#常见问题" title="" target="_blank">常见使用问题</a> <br>
-    支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
-</p>
-        </div>
-    </div>
-
-        
-        
-    <div class="widget">
-      <h3 class="title">Social</h3> 
-        <div class="content social">
-            
-	            <a href="//github.com/shenliyang" rel="external nofollow" title="Github" target="_blank">
-			    	<i class="git fa fa-git"></i>
-			    </a>
-            
-	            <a href="mailto:snippet@91h5.cc" rel="external nofollow" title="邮箱" target="_blank">
-			    	<i class="envelope-o fa fa-envelope-o"></i>
-			    </a>
-            
-	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
-			    	<i class="qq fa fa-qq"></i>
-			    </a>
-            
-	            <a href="/" rel="external nofollow" title="微信" target="_blank">
-			    	<i class="weixin fa fa-weixin"></i>
-			    </a>
-            
-	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
-			    	<i class="users fa fa-users"></i>
-			    </a>
-            
-	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
-			    	<i class="feed fa fa-feed"></i>
-			    </a>
-            
-        </div>
-    </div>
-
-
-        
-        
-
-        
-        
-    <div class="widget">
-        <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/"><i class="fa" aria-hidden="true">2018年12月</i></a><span class="archive-list-count">9</span></li></ul>
-    </div>
-
-
-        
-        
-
-        
-        
-    <div class="widget">
-        <h3 class="title">Friends</h3>
-        <div class="content friends-link">
-        
-            <a href="https://hexo.io/zh-cn/" class="fa" target="_blank">Hexo官网</a>
-        
-        </div>
-    </div>
-
-
-        
-    </aside>
+    </li></div>
+</aside>
 
                 
             </div>
@@ -301,8 +343,6 @@
     </div>
 </div>
 
-
-	<script src="/js/search.js?rev=@@hash"></script>
 
 
 
