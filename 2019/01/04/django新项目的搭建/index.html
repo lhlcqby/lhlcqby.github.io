@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>19.1.2 | 海龙科技欢迎您</title>
+<title>django新项目的搭建 | 海龙科技欢迎您</title>
 
 
     <link rel="alternate" href="/atom.xml" title="海龙科技欢迎您" type="application/atom+xml">
@@ -136,9 +136,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="19.1.2">
+        <h1 id="django新项目的搭建">
             
-	            19.1.2
+	            django新项目的搭建
             
         </h1>
         <div class="post-meta">
@@ -167,7 +167,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/01/02</span>
+            <span class="date-meta">2019/01/04</span>
         </span>
         
             <span class="fa-wrap">
@@ -183,27 +183,12 @@
     </div>
     
     <div class="post-body post-content">
-        <h1 id="疑惑1"><a href="#疑惑1" class="headerlink" title="疑惑1"></a>疑惑1</h1><h1 id="MVT-MTV-Django模型）"><a href="#MVT-MTV-Django模型）" class="headerlink" title="MVT/MTV  (Django模型）"></a>MVT/MTV  (Django模型）</h1><pre><code>M ：  modelsp.py     模型层
-V:    views.py     写业务逻辑的地方
-T  : templates . 模板，定义页面HTML 
-</code></pre><h1 id="MVT-模式-是由MVC-模式演变出来的"><a href="#MVT-模式-是由MVC-模式演变出来的" class="headerlink" title="MVT 模式 是由MVC 模式演变出来的"></a>MVT 模式 是由MVC 模式演变出来的</h1><h1 id="MVC-模式是所有框架遵循的模式"><a href="#MVC-模式是所有框架遵循的模式" class="headerlink" title="MVC 模式是所有框架遵循的模式"></a>MVC 模式是所有框架遵循的模式</h1><pre><code>M：模型层
-V: 模板  HTML 页面
-C  controller . 控制器，写业务逻辑
-</code></pre><h1 id="今天主要内容-–-虚拟环境的创建"><a href="#今天主要内容-–-虚拟环境的创建" class="headerlink" title="今天主要内容   –  虚拟环境的创建"></a>今天主要内容   –  虚拟环境的创建</h1><hr>
-<p>1.安装虚拟环境(CMD)</p>
-<p>pip install virtualenv</p>
-<p>2 指定位置 创建虚拟环境<br>（cd D:/env)<br>virtualenv –no-site-pages -p  E:\python\python.exe(python 编译器位置）django8(虚拟名）</p>
-<p>3 启动虚拟环境  </p>
-<p>activate<br> 如果要停止   命令：deactivate </p>
-<p>4 返回到Workspace(设定好的专门装代码的文件夹）创建项目</p>
-<p>（django8)E:\workspace  : django-admin startproject day01(项目名） </p>
-<h5 id="注意1-：一个虚拟环境只能装一个版本的Django。"><a href="#注意1-：一个虚拟环境只能装一个版本的Django。" class="headerlink" title="注意1  ：一个虚拟环境只能装一个版本的Django。"></a>注意1  ：一个虚拟环境只能装一个版本的Django。</h5><h5 id="注意2-：-以后完成项目后-端口设置成全部可访问的"><a href="#注意2-：-以后完成项目后-端口设置成全部可访问的" class="headerlink" title="注意2  ： 以后完成项目后 端口设置成全部可访问的"></a>注意2  ： 以后完成项目后 端口设置成全部可访问的</h5><pre><code>0.0.0.0 :80    (端口默认都是80）
-</code></pre><h1 id="疑惑2"><a href="#疑惑2" class="headerlink" title="疑惑2"></a>疑惑2</h1><p>###：修改vim配置 /etc/vim/vimrc<br>set nocompatible       不使用vi默认键盘布局，如果不配置，在编辑模式下按方向键会输入字符。<br>set mouse = a （支持鼠标）</p>
-<p>set showmatch          括号匹配模式<br>set ruler              显示状态行<br>set tabstop=4          tab键为4个空格<br>set shiftwidth=4<br>set softtabstop=4<br>syntax on　　　　　  　语法高亮</p>
-<p>set nu               　显示行号<br>set cindent            C语言格式对齐<br>set autoindent         自动对齐</p>
-<h2 id="set-smartindent-智能对齐"><a href="#set-smartindent-智能对齐" class="headerlink" title="set smartindent        智能对齐"></a>set smartindent        智能对齐</h2><h1 id="固态硬盘和机械硬盘"><a href="#固态硬盘和机械硬盘" class="headerlink" title="固态硬盘和机械硬盘"></a>固态硬盘和机械硬盘</h1><pre><code>SSD（固态硬盘）和HDD（机械硬盘）之间的巨大差距来源于它们的结构，SSD为全电子结构，采用集成电路存储技术，使用存储芯片加上寻址控制器来组成的硬盘，类似于U盘技术，没有任何机械运动部件。传统的机械硬盘HDD采用高速旋转的磁盘来存储数据，通过磁头来读写，这一机械运动过程中带有延迟、并且无法同时迸发多向读写数据。
-</code></pre><h1 id="丹尼斯"><a href="#丹尼斯" class="headerlink" title="丹尼斯"></a>丹尼斯</h1><pre><code>丹尼斯·里奇，C语言之父，UNIX之父。曾担任朗讯科技公司贝尔实验室下属的计算机科学研究中心系统软件研究部的主任一职。1978年与布莱恩·科尔尼干（Brian W. Kernighan）一起出版了名著《C程序设计语言（The C Programming Language）》。此书已翻译成多种语言，被誉为c语言的圣经。2011年10月12日（北京时间为10月13日），丹尼斯·里奇去世，享年70岁。
-</code></pre>
+        <p>1.CMD 中启动MySQL ：       net start mysql577<br>2.创建数据库：先进入MySQL：  mysql -u root -p<br>3.在环境创建库：            create database 数据库名字</p>
+<h1 id="新环境的话要先创建虚拟环境："><a href="#新环境的话要先创建虚拟环境：" class="headerlink" title="新环境的话要先创建虚拟环境："></a>新环境的话要先创建虚拟环境：</h1><p>virtualenv -no-site-pages -p E:\python\python.exe  django8(虚拟名）</p>
+<p>（MySQL搞定）<br>另起一个终端：<br>1， CMD 中切换到需要创建工程的文件<br>2， 创建工程 ： django-admin startproject 工程名<br>3， 创建项目：  python manage.py startapp 项目名<br>4,  用pycharm 打开该文件夹。修改init （import pymysql） 和 models （添加模型类 ‘项目名’<br>）并修改路径<br>5，修改并且创建完数据后：Python manage.py makemigrations  ; python manage.py migrate  (迁移）</p>
+<p>迁移后，可在刚才的CMD中使用MySQL展示 ：   use 数据库名  ；  show tables  即可看到表内容</p>
+<p>from django.http import Http</p>
+
     </div>
     
     <div class="post-footer">
@@ -220,15 +205,10 @@ C  controller . 控制器，写业务逻辑
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/01/04/django新项目的搭建/" class="pre-post btn btn-default" title="django新项目的搭建">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">django新项目的搭建</span>
-        </a>
     
-    
-        <a href="/2018/12/28/疑惑--12-28/" class="next-post btn btn-default" title="">
+        <a href="/2019/01/02/创建虚拟环境_Django_1/" class="next-post btn btn-default" title="19.1.2">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs"></span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">19.1.2</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -271,7 +251,7 @@ C  controller . 控制器，写业务逻辑
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#疑惑1"><span class="toc-text">疑惑1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVT-MTV-Django模型）"><span class="toc-text">MVT/MTV  (Django模型）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVT-模式-是由MVC-模式演变出来的"><span class="toc-text">MVT 模式 是由MVC 模式演变出来的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC-模式是所有框架遵循的模式"><span class="toc-text">MVC 模式是所有框架遵循的模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#今天主要内容-–-虚拟环境的创建"><span class="toc-text">今天主要内容   –  虚拟环境的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注意1-：一个虚拟环境只能装一个版本的Django。"><span class="toc-text">注意1  ：一个虚拟环境只能装一个版本的Django。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意2-：-以后完成项目后-端口设置成全部可访问的"><span class="toc-text">注意2  ： 以后完成项目后 端口设置成全部可访问的</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#疑惑2"><span class="toc-text">疑惑2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#set-smartindent-智能对齐"><span class="toc-text">set smartindent        智能对齐</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#固态硬盘和机械硬盘"><span class="toc-text">固态硬盘和机械硬盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#丹尼斯"><span class="toc-text">丹尼斯</span></a></li>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#新环境的话要先创建虚拟环境："><span class="toc-text">新环境的话要先创建虚拟环境：</span></a></li></ol>
         
     </div>
 </aside>
